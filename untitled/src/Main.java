@@ -9,7 +9,7 @@ public class Main {
             System.out.println("1. Thêm cún");
             System.out.println("2. Sắp xếp theo tuổi");
             System.out.println("3. Xóa cún theo tên");
-            System.out.println("4. Sửa thông tin");
+            System.out.println("4. Tìm và Sửa thông tin");
             System.out.println("5. Thoát :");
             Scanner scanner = new Scanner(System.in);
             int num = scanner.nextInt();
@@ -31,13 +31,41 @@ public class Main {
                     delete(list);
                     break;
                 case 4:
-                    System.out.println("------------");
-                    System.out.println("1. ");
-                    System.out.println();
-                    System.out.println();
+                    editInformation(list);
                     break;
             }
         } while (true);
+    }
+
+    private static void editInformation(ArrayList<Dog> list) {
+        System.out.println("Nhập tên cần sửa");
+        Scanner sc = new Scanner(System.in);
+        String name1 = sc.nextLine();
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getName().equals(name1)){
+                System.out.println("1. Sửa Tên ");
+                System.out.println("2. Sửa Tuổi");
+                System.out.println("3. Sửa Màu Sắc");
+                int number = new Scanner(System.in).nextInt();
+                switch (number){
+                    case 1:
+                        System.out.println("Nhập tên muốn sửa :");
+                        String addName = new Scanner(System.in).nextLine();
+                        list.get(i).setName(addName);
+                        break;
+                    case 2:
+                        System.out.println("Nhập tuổi muốn sửa :");
+                        int addAge= new Scanner(System.in).nextInt();
+                        list.get(i).setAge(addAge);
+                        break;
+                    case 3:
+                        System.out.println("Nhập màu cần sửa :");
+                        String addColor = new Scanner(System.in).nextLine();
+                        list.get(i).setColor(addColor);
+                        break;
+                }
+            }
+        }
     }
 
     // sắp xếp nổi bọt
